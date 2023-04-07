@@ -1,0 +1,207 @@
+@font-face {
+  font-family: "HankenGrotesk";
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(assets/fonts/HankenGrotesk-VariableFont_wght.ttf);
+}
+
+:root {
+  --light-red: 0, 100%, 67%;
+  --orangey-yellow: 39, 100%, 56%;
+  --green-teal: 166, 100%, 37%;
+  --cobalt-blue: 234, 85%, 45%;
+
+  --gradient-light-slate-blue: 252, 100%, 67%;
+  --gradient-light-royal-blue: 241, 81%, 54%;
+  --gradient-violet-blue: 256, 72%, 46%, 1;
+  --gradient-persian-blue: 241, 72%, 46%, 0;
+
+  --gradient-primary: linear-gradient(
+    hsl(var(--gradient-light-slate-blue)),
+    hsl(var(--gradient-light-royal-blue))
+  );
+  --gradient-secondary: linear-gradient(
+    hsl(var(--gradient-light-royal-blue)),
+    hsl(var(--gradient-persian-blue))
+  );
+
+  --white: 0, 0%, 100%;
+  --pale-blue: 221, 100%, 96%;
+  --light-lavender: 241, 100%, 89%;
+  --dark-grayblue: 224, 30%, 27%;
+
+  --font-family-default: "HankenGrotesk";
+
+  --fw-regular: 500;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  --fs-200: 1.125rem;
+  --fs-300: 1.25rem;
+  --fs-400: 1.5rem;
+  --fs-500: 1.75rem;
+  --fs-600: 2rem;
+  --fs-900: 5rem;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  font: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  font-family: var(--font-family-default);
+  font-size: var(--fs-200);
+  color: hsl(var(--dark-grayblue));
+}
+
+.section-title {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-400);
+}
+
+.button {
+  color: hsl(var(--white));
+  line-height: 1;
+  background-color: hsl(var(--dark-grayblue));
+  padding: 1rem 2rem;
+  border: 0;
+  border-radius: 100vw;
+  cursor: pointer;
+}
+.button:hover,
+.button:focus-visible {
+  background: var(--gradient-primary);
+}
+
+.results-summary {
+  --border-radius: 2.5rem;
+  --padding: 2rem;
+  max-width: 46rem;
+  display: grid;
+}
+
+.results {
+  padding: var(--padding) calc(1.5 * var(--padding));
+  background: var(--gradient-primary);
+  text-align: center;
+  color: hsl(var(--pale-blue), 0.7);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.result-score {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--gradient-secondary);
+  border-radius: 50%;
+  width: 12rem;
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+}
+
+.result-score span {
+  display: block;
+  line-height: 1;
+  font-size: var(--fs-900);
+  font-weight: var(--fw-black);
+  color: hsl(var(--white));
+}
+
+.result-comment {
+  color: hsl(var(--white));
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-500);
+}
+
+.grid-flow {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.grid-flow[data-spacing="large"] {
+  gap: 2rem;
+}
+
+.summary-item {
+  font-size: var(--fs-200);
+  line-height: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* grid-template-columns: 1fr 3fr 1fr; */
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: hsl(var(--item-color), 0.2);
+}
+.flex-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.summary {
+  padding: var(--padding);
+}
+
+.summary-item-title {
+  color: hsl(var(--item-color));
+  font-weight: var(--fs-bold);
+}
+
+.summary-item-score {
+  color: gray;
+}
+.summary-item-score span {
+  font-weight: var(--fw-bold);
+  color: hsl(var(--dark-grayblue));
+}
+
+.summary-item svg {
+  stroke: hsl(var(--item-color));
+}
+
+.summary-item[data-accent="1"] {
+  --item-color: var(--light-red);
+}
+.summary-item[data-accent="2"] {
+  --item-color: var(--orangey-yellow);
+}
+.summary-item[data-accent="3"] {
+  --item-color: var(--green-teal);
+}
+.summary-item[data-accent="4"] {
+  --item-color: var(--cobalt-blue);
+}
+
+@media (min-width: 765px) {
+  body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+  .results-summary {
+    margin-inline: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    border-radius: var(--border-radius);
+    box-shadow: 0.5rem 1rem 3rem hsl(224, 30%, 27%, 0.2);
+    overflow: hidden;
+  }
+  .results {
+    border-radius: var(--border-radius);
+  }
+}
